@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1566830177">
-  <project timestamp="1566830177">
+<coverage generated="1566831261">
+  <project timestamp="1566831261">
     <file name="/var/www/html/wpblog1/wp-content/plugins/wp-post-contributors-wpcs/inc/classes/class-contributors-plugin-core-main.php">
       <class name="Contributors_Plugin_Core_Main" namespace="global" fullPackage="Contributors_Plugin_Core_Main" package="Contributors_Plugin_Core_Main">
         <metrics complexity="4" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="12" coveredelements="0"/>

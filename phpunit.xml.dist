@@ -10,7 +10,9 @@
 	<filter>
   		<whitelist processUncoveredFilesFromWhitelist="true">
 			<directory suffix=".php">inc/</directory>
-			<exclude>class-contributors-plugin-core-main.php</exclude>
+			<exclude>
+             <file>./inc/class-contributors-plugin-core-main.php</file>
+            </exclude>
   		</whitelist>
 	</filter>
 	<testsuites>
