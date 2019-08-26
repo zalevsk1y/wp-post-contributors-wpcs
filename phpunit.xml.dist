@@ -19,6 +19,7 @@
 		<testsuite name="my-gallery-models">
 			<directory prefix="test-" suffix=".php">./tests/</directory>
 			<exclude>./tests/test-sample.php</exclude>
+			<exclude>./inc/classes/class-contributors-plugin-core-main.php</exclude>
 		</testsuite>
 	</testsuites>
 </phpunit>

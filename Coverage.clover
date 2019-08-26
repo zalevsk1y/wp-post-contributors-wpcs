@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1566822509">
-  <project timestamp="1566822509">
+<coverage generated="1566824841">
+  <project timestamp="1566824841">
     <file name="/var/www/html/wpblog1/wp-content/plugins/wp-post-contributors-wpcs/inc/classes/class-contributors-plugin-core-main.php">
       <class name="Contributors_Plugin_Core_Main" namespace="global" fullPackage="Contributors_Plugin_Core_Main" package="Contributors_Plugin_Core_Main">
         <metrics complexity="4" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="12" coveredelements="0"/>
@@ -92,17 +92,6 @@
       <line num="158" type="stmt" count="1"/>
       <metrics loc="161" ncloc="97" classes="1" methods="7" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="60" coveredstatements="55" elements="67" coveredelements="60"/>
     </file>
-    <file name="/var/www/html/wpblog1/wp-content/plugins/wp-post-contributors-wpcs/inc/classes/class-contributors-plugin-my-exception.php">
-      <class name="Contributors_Plugin_My_Exception" namespace="global" fullPackage="Exception" package="Exception">
-        <metrics complexity="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="3" coveredstatements="0" elements="4" coveredelements="0"/>
-      </class>
-      <line num="8" type="stmt" count="0"/>
-      <line num="31" type="method" name="__construct" visibility="public" complexity="1" crap="2.00" count="0"/>
-      <line num="32" type="stmt" count="0"/>
-      <line num="33" type="stmt" count="0"/>
-      <line num="34" type="stmt" count="0"/>
-      <metrics loc="36" ncloc="11" classes="1" methods="1" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="5" coveredelements="0"/>
-    </file>
     <file name="/var/www/html/wpblog1/wp-content/plugins/wp-post-contributors-wpcs/inc/classes/class-contributors-plugin-template-render.php">
       <class name="Contributors_Plugin_Template_Render" namespace="global" fullPackage="Contributors.Plugin.Template">
         <metrics complexity="7" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="13" elements="18" coveredelements="13"/>
@@ -127,6 +116,6 @@
       <line num="66" type="stmt" count="4"/>
       <metrics loc="69" ncloc="32" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="13" elements="18" coveredelements="13"/>
     </file>
-    <metrics files="4" loc="313" ncloc="161" classes="4" methods="13" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="89" coveredstatements="68" elements="102" coveredelements="73"/>
+    <metrics files="3" loc="277" ncloc="150" classes="3" methods="12" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="85" coveredstatements="68" elements="97" coveredelements="73"/>
   </project>
 </coverage>
