@@ -10,16 +10,14 @@
 	<filter>
   		<whitelist processUncoveredFilesFromWhitelist="true">
 			<directory suffix=".php">inc/</directory>
-			<exclude>
-				<directory suffix=".php">inc/Core</directory>
-			</exclude>
+			<exclude>class-contributors-plugin-core-main.php</exclude>
   		</whitelist>
 	</filter>
 	<testsuites>
 		<testsuite name="my-gallery-models">
 			<directory prefix="test-" suffix=".php">./tests/</directory>
 			<exclude>./tests/test-sample.php</exclude>
-			<exclude>./inc/classes/class-contributors-plugin-core-main.php</exclude>
+		
 		</testsuite>
 	</testsuites>
 </phpunit>
