@@ -14,6 +14,13 @@
     <button type="button" class="button tag-add" id="add-contributor">Add</button>
 </div>
 <ul class=\'contributors-list\' id=\'editable-contributors-list\'>
+                            <li data-id=1>
+                    <span class="contributor-nickname">admin</span>
+                    <input type="hidden" name=wp_contributors_plugin_value[] value=1>
+                    <span class=\'fo fo-close\' >
+                </li>
+         
+       
 </ul></div>
 </div>
 </div>';

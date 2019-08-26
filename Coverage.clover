@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1566829124">
-  <project timestamp="1566829124">
+<coverage generated="1566829634">
+  <project timestamp="1566829634">
     <file name="/var/www/html/wpblog1/wp-content/plugins/wp-post-contributors-wpcs/inc/classes/class-contributors-plugin-core-main.php">
       <class name="Contributors_Plugin_Core_Main" namespace="global" fullPackage="Contributors_Plugin_Core_Main" package="Contributors_Plugin_Core_Main">
         <metrics complexity="4" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="12" coveredelements="0"/>
@@ -21,7 +21,7 @@
     </file>
     <file name="/var/www/html/wpblog1/wp-content/plugins/wp-post-contributors-wpcs/inc/classes/class-contributors-plugin-metabox-controller.php">
       <class name="Contributors_Plugin_Metabox_Controller" namespace="global" fullPackage="Controllers" package="Controllers">
-        <metrics complexity="24" methods="9" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="66" coveredstatements="52" elements="75" coveredelements="55"/>
+        <metrics complexity="24" methods="9" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="66" coveredstatements="62" elements="75" coveredelements="67"/>
       </class>
       <line num="37" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="5"/>
       <line num="38" type="stmt" count="5"/>
@@ -56,12 +56,12 @@
       <line num="100" type="stmt" count="5"/>
       <line num="101" type="stmt" count="0"/>
       <line num="103" type="stmt" count="5"/>
-      <line num="111" type="method" name="render_post_contributors_box" visibility="public" complexity="2" crap="2.09" count="2"/>
+      <line num="111" type="method" name="render_post_contributors_box" visibility="public" complexity="2" crap="2" count="2"/>
       <line num="112" type="stmt" count="2"/>
       <line num="113" type="stmt" count="2"/>
       <line num="114" type="stmt" count="2"/>
-      <line num="115" type="stmt" count="0"/>
-      <line num="116" type="stmt" count="0"/>
+      <line num="115" type="stmt" count="2"/>
+      <line num="116" type="stmt" count="2"/>
       <line num="119" type="stmt" count="2"/>
       <line num="120" type="stmt" count="2"/>
       <line num="126" type="method" name="add_contributors_box" visibility="public" complexity="1" crap="1" count="1"/>
@@ -73,15 +73,15 @@
       <line num="132" type="stmt" count="1"/>
       <line num="133" type="stmt" count="1"/>
       <line num="135" type="stmt" count="1"/>
-      <line num="143" type="method" name="get_contributors_data" visibility="protected" complexity="3" crap="12.00" count="0"/>
-      <line num="144" type="stmt" count="0"/>
-      <line num="145" type="stmt" count="0"/>
-      <line num="146" type="stmt" count="0"/>
-      <line num="147" type="stmt" count="0"/>
-      <line num="148" type="stmt" count="0"/>
-      <line num="149" type="stmt" count="0"/>
-      <line num="150" type="stmt" count="0"/>
-      <line num="154" type="stmt" count="0"/>
+      <line num="143" type="method" name="get_contributors_data" visibility="protected" complexity="3" crap="3" count="2"/>
+      <line num="144" type="stmt" count="2"/>
+      <line num="145" type="stmt" count="2"/>
+      <line num="146" type="stmt" count="2"/>
+      <line num="147" type="stmt" count="2"/>
+      <line num="148" type="stmt" count="2"/>
+      <line num="149" type="stmt" count="2"/>
+      <line num="150" type="stmt" count="2"/>
+      <line num="154" type="stmt" count="2"/>
       <line num="162" type="method" name="render_post" visibility="public" complexity="4" crap="4.00" count="1"/>
       <line num="163" type="stmt" count="1"/>
       <line num="164" type="stmt" count="1"/>
@@ -98,7 +98,7 @@
       <line num="177" type="stmt" count="1"/>
       <line num="180" type="stmt" count="1"/>
       <line num="181" type="stmt" count="1"/>
-      <metrics loc="184" ncloc="107" classes="1" methods="9" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="66" coveredstatements="52" elements="75" coveredelements="55"/>
+      <metrics loc="184" ncloc="107" classes="1" methods="9" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="66" coveredstatements="62" elements="75" coveredelements="67"/>
     </file>
     <file name="/var/www/html/wpblog1/wp-content/plugins/wp-post-contributors-wpcs/inc/classes/class-contributors-plugin-my-exception.php">
       <class name="Contributors_Plugin_My_Exception" namespace="global" fullPackage="Exception" package="Exception">
@@ -135,6 +135,6 @@
       <line num="66" type="stmt" count="4"/>
       <metrics loc="69" ncloc="32" classes="1" methods="2" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="13" elements="18" coveredelements="13"/>
     </file>
-    <metrics files="4" loc="338" ncloc="171" classes="4" methods="15" coveredmethods="4" conditionals="0" coveredconditionals="0" statements="95" coveredstatements="68" elements="110" coveredelements="72"/>
+    <metrics files="4" loc="338" ncloc="171" classes="4" methods="15" coveredmethods="6" conditionals="0" coveredconditionals="0" statements="95" coveredstatements="78" elements="110" coveredelements="84"/>
   </project>
 </coverage>

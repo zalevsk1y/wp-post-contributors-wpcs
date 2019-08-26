@@ -111,9 +111,9 @@ if ( ! class_exists( 'Contributors_Plugin_Metabox_Controller' ) ) {
 		public function render_post_contributors_box( $post ) {
 			$contributors_ids = get_post_meta( $post->ID, CONTRIBUTORS_PLUGIN_META, true );
 			$args             = array( 'authors' => get_users( 'orderby=nicename' ) );
-			if ( ! empty( $contributor_ids ) ) {
+			if ( ! empty( $contributors_ids ) ) {
 				$contributors_ids     = explode( ',', $contributors_ids );
-				$args['contributors'] = $this->getContributorsData( $contributors_ids );
+				$args['contributors'] = $this->get_contributors_data( $contributors_ids );
 			}
 
 			echo $this->admin_template->render( $args );
