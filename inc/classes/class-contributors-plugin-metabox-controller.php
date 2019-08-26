@@ -103,6 +103,57 @@ if ( ! class_exists( 'Contributors_Plugin_Metabox_Controller' ) ) {
 			return $this;
 		}
 		/**
+		 * Render view for post-edit page that allow to add and remove contributors.
+		 *
+		 * @param int $post WP_Post object.
+		 * @return void
+		 */
+		public function render_post_contributors_box( $post ) {
+			$contributors_ids = get_post_meta( $post->ID, CONTRIBUTORS_PLUGIN_META, true );
+			$args             = array( 'authors' => get_users( 'orderby=nicename' ) );
+			if ( ! empty( $contributor_ids ) ) {
+				$contributors_ids     = explode( ',', $contributors_ids );
+				$args['contributors'] = $this->getContributorsData( $contributors_ids );
+			}
+
+			echo $this->admin_template->render( $args );
+		}
+		/**
+		 * Add metabox "Contributors" to "post_author_meta".Used in add action.
+		 *
+		 * @return void
+		 */
+		public function add_contributors_box() {
+			add_meta_box(
+				'post_author_meta',
+				__( 'Contributors' ),
+				array( $this, 'render_post_contributors_box' ),
+				'post',
+				'side',
+				'high'
+			);
+		}
+
+		/**
+		 * Get contributors nickname by id.
+		 *
+		 * @param array $contributors_id  array of user ids that marked as contributors.
+		 * @return array of stdClass objects with contributors id and nickname.
+		 */
+		protected function get_contributors_data( $contributors_id ) {
+			$contributors = array();
+			foreach ( $contributors_id as $id ) {
+				$user = \get_userdata( intval( $id ) );
+				if ( $user ) {
+					$contributors[] = (object) array(
+						'ID'       => $user->ID,
+						'nickname' => $user->nickname,
+					);
+				}
+			}
+			return $contributors;
+		}
+		/**
 		 * Render contributors list to add to the post content
 		 *
 		 * @param string $content post content.

@@ -34,10 +34,17 @@ class Contributors_Plugin_Metabox_Controller_Test extends \WP_UnitTestCase
         
         do_action('save_post', $this->post_id);
     }
+  
     public function test_save_meta_data()
     {
         $meta = get_post_meta($this->post_id, CONTRIBUTORS_PLUGIN_META, true);
         $this->assertEquals(implode(',', $this->contributors), $meta);
+    }
+    public function test_permission_check()
+    {
+        wp_set_current_user($this->users[3]['id']);
+        $response=$this->controller->save_meta_data($this->post_id);
+        $this->assertEquals($response,__( 'Nonce is not verified', CONTRIBUTORS_PLUGIN_SLUG ));
     }
     public function test_render_post_contributors_box()
     {

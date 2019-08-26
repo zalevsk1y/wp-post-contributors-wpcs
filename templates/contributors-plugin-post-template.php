@@ -6,7 +6,7 @@
                 <li class='contributors-list-item'>
                     <?php echo $contributor->avatar_tag ?>
                     <a href='<?php echo esc_url($contributor->link) ?>'>
-                        <span calss='contributors-post-nickname'><?php echo esc_html($contributor->nickname) ?></span>
+                        <span class='contributors-post-nickname'><?php echo esc_html($contributor->nickname) ?></span>
                     </a>
                 </li>
             <?php endforeach; ?>
