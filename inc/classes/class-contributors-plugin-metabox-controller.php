@@ -56,23 +56,13 @@ if ( ! class_exists( 'Contributors_Plugin_Metabox_Controller' ) ) {
 		 * @return void|string
 		 */
 		public function save_meta_data( $post_id ) {
-			if ( ! isset( $_POST[ CONTRIBUTORS_PLUGIN_NONCE ] ) ) {
-				return;
-			}
-
-			if ( ! wp_verify_nonce( $_POST[ CONTRIBUTORS_PLUGIN_NONCE ], CONTRIBUTORS_PLUGIN_NONCE_ACTION ) ) {
-				return;
-			}
-
-			if ( ! current_user_can( 'edit_post', $post_id ) ) {
-				return;
-			}
-			if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-				return;
+			try {
+				$this->autosave_check()->have_permission( $post_id );
+			} catch ( Contributors_Plugin_My_Exception $e ) {
+				return $e->getMessage();
 			}
 			if ( isset( $_POST[ CONTRIBUTORS_PLUGIN_FIELD ] ) ) {
 				$contributors = sanitize_meta( CONTRIBUTORS_PLUGIN_META, $_POST[ CONTRIBUTORS_PLUGIN_FIELD ], 'post' );
-
 				if ( isset( $contributors ) && '' !== $contributors ) {
 					update_post_meta( $post_id, CONTRIBUTORS_PLUGIN_META, implode( ',', $contributors ) );
 				} else {
@@ -81,54 +71,36 @@ if ( ! class_exists( 'Contributors_Plugin_Metabox_Controller' ) ) {
 			}
 		}
 		/**
-		 * Render view for post-edit page that allow to add and remove contributors.
+		 * Check is save action is autosave.
 		 *
-		 * @param int $post WP_Post object.
-		 * @return void
+		 * @return object $this for chain building.
+		 * @throws Contributors_Plugin_My_Exception If doing autosave.
 		 */
-		public function render_post_contributors_box( $post ) {
-			$contributors_ids = get_post_meta( $post->ID, CONTRIBUTORS_PLUGIN_META, true );
-			$args             = array( 'authors' => get_users( 'orderby=nicename' ) );
-			if ( ! empty( $contributors_ids ) ) {
-				$contributors_ids     = explode( ',', $contributors_ids );
-				$args['contributors'] = $this->get_contributors_data( $contributors_ids );
+		protected function autosave_check() {
+			if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+				throw new Contributors_Plugin_My_Exception( 'Autosave' );
 			}
-
-			echo $this->admin_template->render( $args );
+			return $this;
 		}
 		/**
-		 * Add metabox "Contributors" to "post_author_meta".Used in add action.
+		 * Check if user have permission to modify post.
 		 *
-		 * @return void
+		 * @param int $post_id post id.
+		 * @return object $this for chain building.
+		 * @throws Contributors_Plugin_My_Exception If user don`t haver permission or wrong nonce.
 		 */
-		public function add_contributors_box() {
-			add_meta_box(
-				'post_author_meta',
-				__( 'Contributors' ),
-				array( $this, 'render_post_contributors_box' ),
-				'post',
-				'side',
-				'high'
-			);
-		}
-		/**
-		 * Get contributors nickname by id
-		 *
-		 * @param array $contributors_id  array of user ids that marked as contributors.
-		 * @return array of stdClass objects with contributors id and nickname.
-		 */
-		protected function get_contributors_data( $contributors_id ) {
-			$contributors = array();
-			foreach ( $contributors_id as $id ) {
-				$user = \get_userdata( intval( $id ) );
-				if ( $user ) {
-					$contributors[] = (object) array(
-						'ID'       => $user->ID,
-						'nickname' => $user->nickname,
-					);
-				}
+		protected function have_permission( $post_id ) {
+			if ( ! isset( $_POST[ CONTRIBUTORS_PLUGIN_NONCE ] ) ) {
+				throw new Contributors_Plugin_My_Exception( __( 'Nonce field did not set.', CONTRIBUTORS_PLUGIN_SLUG ) );
 			}
-			return $contributors;
+			$nonce = $_POST[ CONTRIBUTORS_PLUGIN_NONCE ];
+			if ( ! wp_verify_nonce( $nonce, CONTRIBUTORS_PLUGIN_NONCE_ACTION ) ) {
+				throw new Contributors_Plugin_My_Exception( __( 'Nonce is not verified', CONTRIBUTORS_PLUGIN_SLUG ) );
+			}
+			if ( ! current_user_can( 'edit_post', $post_id ) ) {
+				throw new Contributors_Plugin_My_Exception( __( 'You have no rights to edit this post', CONTRIBUTORS_PLUGIN_SLUG ) );
+			}
+			return $this;
 		}
 		/**
 		 * Render contributors list to add to the post content
