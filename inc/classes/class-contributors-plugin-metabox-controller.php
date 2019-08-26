@@ -19,13 +19,13 @@ if ( ! class_exists( 'Contributors_Plugin_Metabox_Controller' ) ) {
 		/**
 		 * Template file path for post contributors box template
 		 *
-		 * @var string
+		 * @var Contributors_Plugin_Template_Render
 		 */
 		protected $post_template;
 		/**
 		 * Template file path for admin select contributors box template
 		 *
-		 * @var string
+		 * @var Contributors_Plugin_Template_Render
 		 */
 		protected $admin_template;
 		/**
