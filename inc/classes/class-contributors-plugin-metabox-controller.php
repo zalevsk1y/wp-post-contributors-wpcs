@@ -9,6 +9,8 @@ if ( ! class_exists( 'Contributors_Plugin_Metabox_Controller' ) ) {
 	/**
 	 * Class manage metabox functions
 	 *
+	 * PHP version 7.0
+	 *
 	 * @package Controllers
 	 * @author  Evgeniy S.Zalevskiy <2600@ukr.net>
 	 * @license MIT
@@ -54,52 +56,29 @@ if ( ! class_exists( 'Contributors_Plugin_Metabox_Controller' ) ) {
 		 * @return void|string
 		 */
 		public function save_meta_data( $post_id ) {
-			try {
-				$this->autosave_check()->have_permission( $post_id );
-			} catch ( Contributors_Plugin_My_Exception $e ) {
-				return $e->getMessage();
+			if ( ! isset( $_POST[ CONTRIBUTORS_PLUGIN_NONCE ] ) ) {
+				return;
+			}
+
+			if ( ! wp_verify_nonce( $_POST[ CONTRIBUTORS_PLUGIN_NONCE ], CONTRIBUTORS_PLUGIN_NONCE_ACTION ) ) {
+				return;
+			}
+
+			if ( ! current_user_can( 'edit_post', $post_id ) ) {
+				return;
+			}
+			if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+				return;
 			}
 			if ( isset( $_POST[ CONTRIBUTORS_PLUGIN_FIELD ] ) ) {
 				$contributors = sanitize_meta( CONTRIBUTORS_PLUGIN_META, $_POST[ CONTRIBUTORS_PLUGIN_FIELD ], 'post' );
 
-				if ( isset( $contributors ) && $contributors != '' ) {
+				if ( isset( $contributors ) && '' !== $contributors ) {
 					update_post_meta( $post_id, CONTRIBUTORS_PLUGIN_META, implode( ',', $contributors ) );
 				} else {
 					update_post_meta( $post_id, CONTRIBUTORS_PLUGIN_META, '' );
 				}
 			}
-		}
-		/**
-		 * Check is save action is autosave.
-		 *
-		 * @return object $this for chain building.
-		 */
-		protected function autosave_check() {
-			if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-				throw new Contributors_Plugin_My_Exception( 'Autosave' );
-			}
-			return $this;
-		}
-		/**
-		 * Check if user have permission to modify post.
-		 *
-		 * @param int $post_id post id.
-		 * @return object $this for chain building.
-		 */
-		protected function have_permission( $post_id ) {
-			if ( ! isset( $_POST[ CONTRIBUTORS_PLUGIN_NONCE ] ) ) {
-				throw new Contributors_Plugin_My_Exception( __( 'Nonce field did not set.', CONTRIBUTORS_PLUGIN_SLUG ) );
-			}
-
-			$nonce = $_POST[ CONTRIBUTORS_PLUGIN_NONCE ];
-			if ( ! wp_verify_nonce( $nonce, CONTRIBUTORS_PLUGIN_NONCE_ACTION ) ) {
-				throw new Contributors_Plugin_My_Exception( __( 'Nonce is not verified', CONTRIBUTORS_PLUGIN_SLUG ) );
-			}
-
-			if ( ! current_user_can( 'edit_post', $post_id ) ) {
-				throw new Contributors_Plugin_My_Exception( __( 'You have no rights to edit this post', CONTRIBUTORS_PLUGIN_SLUG ) );
-			}
-			return $this;
 		}
 		/**
 		 * Render view for post-edit page that allow to add and remove contributors.
@@ -135,7 +114,7 @@ if ( ! class_exists( 'Contributors_Plugin_Metabox_Controller' ) ) {
 		/**
 		 * Get contributors nickname by id
 		 *
-		 * @param array $contributorsId  array of user ids that marked as contributors.
+		 * @param array $contributors_id  array of user ids that marked as contributors.
 		 * @return array of stdClass objects with contributors id and nickname.
 		 */
 		protected function get_contributors_data( $contributors_id ) {
@@ -159,7 +138,7 @@ if ( ! class_exists( 'Contributors_Plugin_Metabox_Controller' ) ) {
 		 */
 		public function render_post( $content ) {
 			$meta_data = get_post_meta( get_the_ID(), CONTRIBUTORS_PLUGIN_META, true );
-			if ( $meta_data == '' ) {
+			if ( '' === $meta_data ) {
 				return $content;
 			}
 			$contributors = explode( ',', $meta_data );

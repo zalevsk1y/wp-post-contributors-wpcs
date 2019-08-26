@@ -15,7 +15,7 @@ License: MIT
 if (!defined("ABSPATH")) {
     exit;
 }
-
+define("CONTRIBUTORS_PLUGIN_VERSION", "1.0.0");
 define("CONTRIBUTORS_PLUGIN_SLUG", "wp-post-contributors");
 define("CONTRIBUTORS_PLUGIN_NAMESPACE", "ContributorsPlugin");
 define("CONTRIBUTORS_PLUGIN_DIR", plugin_dir_path(__FILE__));
