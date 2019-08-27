@@ -1,24 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1566831261">
-  <project timestamp="1566831261">
-    <file name="/var/www/html/wpblog1/wp-content/plugins/wp-post-contributors-wpcs/inc/classes/class-contributors-plugin-core-main.php">
-      <class name="Contributors_Plugin_Core_Main" namespace="global" fullPackage="Contributors_Plugin_Core_Main" package="Contributors_Plugin_Core_Main">
-        <metrics complexity="4" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="12" coveredelements="0"/>
-      </class>
-      <line num="20" type="method" name="__construct" visibility="public" complexity="1" crap="2.00" count="0"/>
-      <line num="22" type="stmt" count="0"/>
-      <line num="23" type="stmt" count="0"/>
-      <line num="29" type="method" name="add_actions" visibility="protected" complexity="1" crap="2.00" count="0"/>
-      <line num="31" type="stmt" count="0"/>
-      <line num="32" type="stmt" count="0"/>
-      <line num="39" type="method" name="set_styles" visibility="public" complexity="2" crap="6.00" count="0"/>
-      <line num="40" type="stmt" count="0"/>
-      <line num="41" type="stmt" count="0"/>
-      <line num="42" type="stmt" count="0"/>
-      <line num="43" type="stmt" count="0"/>
-      <line num="45" type="stmt" count="0"/>
-      <metrics loc="47" ncloc="21" classes="1" methods="3" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="9" coveredstatements="0" elements="12" coveredelements="0"/>
-    </file>
+<coverage generated="1566904619">
+  <project timestamp="1566904619">
     <file name="/var/www/html/wpblog1/wp-content/plugins/wp-post-contributors-wpcs/inc/classes/class-contributors-plugin-metabox-controller.php">
       <class name="Contributors_Plugin_Metabox_Controller" namespace="global" fullPackage="Controllers" package="Controllers">
         <metrics complexity="24" methods="9" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="66" coveredstatements="62" elements="75" coveredelements="67"/>
@@ -135,6 +117,6 @@
       <line num="66" type="stmt" count="4"/>
       <metrics loc="69" ncloc="32" classes="1" methods="2" coveredmethods="1" conditionals="0" coveredconditionals="0" statements="16" coveredstatements="14" elements="18" coveredelements="15"/>
     </file>
-    <metrics files="4" loc="338" ncloc="171" classes="4" methods="15" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="95" coveredstatements="79" elements="110" coveredelements="86"/>
+    <metrics files="3" loc="291" ncloc="150" classes="3" methods="12" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="86" coveredstatements="79" elements="98" coveredelements="86"/>
   </project>
 </coverage>

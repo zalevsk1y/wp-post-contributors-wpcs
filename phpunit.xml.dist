@@ -11,7 +11,7 @@
   		<whitelist processUncoveredFilesFromWhitelist="true">
 			<directory suffix=".php">inc/</directory>
 			<exclude>
-             <file>./inc/class-contributors-plugin-core-main.php</file>
+             <file>./inc/classes/class-contributors-plugin-core-main.php</file>
             </exclude>
   		</whitelist>
 	</filter>
