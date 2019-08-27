@@ -9,7 +9,7 @@ if ( ! class_exists( 'Contributors_Plugin_Metabox_Controller' ) ) {
 	/**
 	 * Class manage metabox functions
 	 *
-	 * PHP version 7.0
+	 * PHP version 5.6
 	 *
 	 * @package Controllers
 	 * @author  Evgeniy S.Zalevskiy <2600@ukr.net>
@@ -61,6 +61,7 @@ if ( ! class_exists( 'Contributors_Plugin_Metabox_Controller' ) ) {
 			} catch ( Contributors_Plugin_My_Exception $e ) {
 				return $e->getMessage();
 			}
+			// there is no need to sanitize nonce data because nonce verification is simple a String comparison
 			if ( isset( $_POST[ CONTRIBUTORS_PLUGIN_FIELD ] ) ) {
 				$contributors = sanitize_meta( CONTRIBUTORS_PLUGIN_META, $_POST[ CONTRIBUTORS_PLUGIN_FIELD ], 'post' );
 				if ( isset( $contributors ) && '' !== $contributors ) {

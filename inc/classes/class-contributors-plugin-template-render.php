@@ -10,7 +10,7 @@ if ( ! class_exists( 'Contributors_Plugin_Template_Render' ) ) {
 	 * Class loading template file and render it with args. Args is not is not escaping,
 	 * so please escape them in template or before passing to TemplateRender.
 	 *
-	 * PHP version 7.0
+	 * PHP version 5.6
 	 *
 	 * @author  Evgeniy S.Zalevskiy <2600@ukr.net>
 	 * @license MIT https://opensource.org/licenses/MIT

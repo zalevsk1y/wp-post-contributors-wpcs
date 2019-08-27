@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: wp-post-contributors
+Plugin Name: wp-post-contributors-wpcs
 Plugin URI: https://github.com/zalevsk1y/wp-post-contributors
 Description: Add contributors to the post..
 Version: 1.0.0
