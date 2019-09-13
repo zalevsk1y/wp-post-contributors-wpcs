@@ -8,7 +8,7 @@
 if ( ! class_exists( 'Contributors_Plugin_Core_Main' ) ) {
 	/**
 	 * Class add scripts, styles and action hooks.
-	 * 
+	 *
 	 * PHP version 5.6
 	 *
 	 * @package Contributors_Plugin_Core_Main

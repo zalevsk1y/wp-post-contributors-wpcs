@@ -56,12 +56,11 @@ if ( ! class_exists( 'Contributors_Plugin_Metabox_Controller' ) ) {
 		 * @return void|string
 		 */
 		public function save_meta_data( $post_id ) {
-			try {
-				$this->autosave_check()->have_permission( $post_id );
-			} catch ( Contributors_Plugin_My_Exception $e ) {
-				return $e->getMessage();
+			$result_of_permission_check = $this->have_permission( $post_id );
+			if ( $this->autosave_check() || is_wp_error( $result_of_permission_check ) ) {
+				return ! is_wp_error( $result_of_permission_check ) ?: $result_of_permission_check->get_error_message();
 			}
-			// there is no need to sanitize nonce data because nonce verification is simple a String comparison
+			// there is no need to sanitize nonce data because nonce verification is simple a String comparison.
 			if ( isset( $_POST[ CONTRIBUTORS_PLUGIN_FIELD ] ) ) {
 				$contributors = sanitize_meta( CONTRIBUTORS_PLUGIN_META, $_POST[ CONTRIBUTORS_PLUGIN_FIELD ], 'post' );
 				if ( isset( $contributors ) && '' !== $contributors ) {
@@ -74,34 +73,32 @@ if ( ! class_exists( 'Contributors_Plugin_Metabox_Controller' ) ) {
 		/**
 		 * Check is save action is autosave.
 		 *
-		 * @return object $this for chain building.
-		 * @throws Contributors_Plugin_My_Exception If doing autosave.
+		 * @return bool If doing autosave.
 		 */
 		protected function autosave_check() {
 			if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-				throw new Contributors_Plugin_My_Exception( 'Autosave' );
+				return true;
 			}
-			return $this;
+			return false;
 		}
 		/**
 		 * Check if user have permission to modify post.
 		 *
 		 * @param int $post_id post id.
-		 * @return object $this for chain building.
-		 * @throws Contributors_Plugin_My_Exception If user don`t haver permission or wrong nonce.
+		 * @return \WP_Error|bool $this for chain building.
 		 */
 		protected function have_permission( $post_id ) {
 			if ( ! isset( $_POST[ CONTRIBUTORS_PLUGIN_NONCE ] ) ) {
-				throw new Contributors_Plugin_My_Exception( __( 'Nonce field did not set.', CONTRIBUTORS_PLUGIN_SLUG ) );
+				return new \WP_Error( 'no_nonce', __( 'Nonce field did not set.', CONTRIBUTORS_PLUGIN_SLUG ) );
 			}
 			$nonce = $_POST[ CONTRIBUTORS_PLUGIN_NONCE ];
 			if ( ! wp_verify_nonce( $nonce, CONTRIBUTORS_PLUGIN_NONCE_ACTION ) ) {
-				throw new Contributors_Plugin_My_Exception( __( 'Nonce is not verified', CONTRIBUTORS_PLUGIN_SLUG ) );
+				return new \WP_Error( 'wrong_nonce', __( 'Nonce is not verified.', CONTRIBUTORS_PLUGIN_SLUG ) );
 			}
 			if ( ! current_user_can( 'edit_post', $post_id ) ) {
-				throw new Contributors_Plugin_My_Exception( __( 'You have no rights to edit this post', CONTRIBUTORS_PLUGIN_SLUG ) );
+				return new \WP_Error( 'no_rights', __( 'You have no rights to edit this post.', CONTRIBUTORS_PLUGIN_SLUG ) );
 			}
-			return $this;
+			return false;
 		}
 		/**
 		 * Render view for post-edit page that allow to add and remove contributors.
