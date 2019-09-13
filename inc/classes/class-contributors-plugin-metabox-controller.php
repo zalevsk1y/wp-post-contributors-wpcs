@@ -53,12 +53,12 @@ if ( ! class_exists( 'Contributors_Plugin_Metabox_Controller' ) ) {
 		 *  Save contributors data to post meta.
 		 *
 		 * @param int $post_id post id.
-		 * @return void|string
+		 * @return void|bool
 		 */
 		public function save_meta_data( $post_id ) {
 			$result_of_permission_check = $this->have_permission( $post_id );
 			if ( $this->autosave_check() || is_wp_error( $result_of_permission_check ) ) {
-				return ! is_wp_error( $result_of_permission_check ) ?: $result_of_permission_check->get_error_message();
+				return false;
 			}
 			// there is no need to sanitize nonce data because nonce verification is simple a String comparison.
 			if ( isset( $_POST[ CONTRIBUTORS_PLUGIN_FIELD ] ) ) {

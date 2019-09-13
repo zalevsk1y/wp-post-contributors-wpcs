@@ -44,7 +44,7 @@ class Contributors_Plugin_Metabox_Controller_Test extends \WP_UnitTestCase
     {
         wp_set_current_user($this->users[3]['id']);
         $response=$this->controller->save_meta_data($this->post_id);
-        $this->assertEquals($response,__( 'Nonce is not verified.', CONTRIBUTORS_PLUGIN_SLUG ));
+        $this->assertEquals($response,false);
     }
     public function test_render_post_contributors_box()
     {

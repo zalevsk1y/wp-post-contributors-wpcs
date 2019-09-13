@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1568388036">
-  <project timestamp="1568388036">
+<coverage generated="1568388441">
+  <project timestamp="1568388441">
     <file name="/var/www/html/wpblog1/wp-content/plugins/wp-post-contributors-wpcs/inc/classes/class-contributors-plugin-metabox-controller.php">
       <class name="Contributors_Plugin_Metabox_Controller" namespace="global" fullPackage="Controllers" package="Controllers">
-        <metrics complexity="26" methods="9" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="66" coveredstatements="62" elements="75" coveredelements="67"/>
+        <metrics complexity="25" methods="9" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="66" coveredstatements="62" elements="75" coveredelements="67"/>
       </class>
       <line num="37" type="method" name="__construct" visibility="public" complexity="1" crap="1" count="5"/>
       <line num="38" type="stmt" count="5"/>
@@ -15,7 +15,7 @@
       <line num="49" type="stmt" count="5"/>
       <line num="50" type="stmt" count="5"/>
       <line num="51" type="stmt" count="5"/>
-      <line num="58" type="method" name="save_meta_data" visibility="public" complexity="7" crap="7.07" count="5"/>
+      <line num="58" type="method" name="save_meta_data" visibility="public" complexity="6" crap="6.05" count="5"/>
       <line num="59" type="stmt" count="5"/>
       <line num="60" type="stmt" count="5"/>
       <line num="61" type="stmt" count="5"/>
